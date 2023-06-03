@@ -1,5 +1,5 @@
 # Furniture-Store
-Demo Link : https://funiturestorepro.netlify.app/
+Demo Link : https://furniturestorepro.netlify.app/
 
 This project is a typical basic E-commerce website
 This project was built with HTML5 CSS Javascript
