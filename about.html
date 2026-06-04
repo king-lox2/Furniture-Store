@@ -1,0 +1,264 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR SECTION -->
+    <nav class="nav-container about">
+      <section class="nav-center">
+        <!-- NAVLOGO AND BAR SECTION -->
+        <div class="logo-btn">
+          <button class="nav-btn">
+            <i class="fa-solid fa-bars fa-fw"></i>
+          </button>
+
+          <a href="index.html" class="nav-logo">
+            <h1 class="logo">
+              EveristBen
+              <i
+                class="heart fa-solid fa-heart fa-beat"
+                style="--fa-animation-duration: 1s"
+              ></i>
+            </h1>
+          </a>
+        </div>
+        <!-- NAVLINKS SECTION -->
+        <ul class="nav-links">
+          <li>
+            <a href="./index.html">Home</a>
+          </li>
+          <li>
+            <a href="./about.html">About</a>
+          </li>
+          <li>
+            <a href="./product.html">Products</a>
+          </li>
+
+          <div class="dark">
+            <button class="dark-btn">
+              <i class="fas fa-sun fa-fw"></i>
+              <i class="fas fa-moon fa-fw"></i>
+            </button>
+          </div>
+        </ul>
+        <!-- CART AND DARK SECTION -->
+        <div class="cart-dark">
+          <div class="cart-container cart-btn">
+            <button class="navCart-btn">
+              <i class="fa-sharp fa-solid fa-cart-shopping fa-fw"></i>
+            </button>
+            <div class="amount-container">
+              <p class="total-number">0</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </nav>
+    <!--SIDEBAR BTN SECTION-->
+    <section class="sidebar-container">
+      <aside class="sidebar-center">
+        <div class="sidebar-format">
+          <div></div>
+          <button class="aside-btn">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+
+        <div class="aside-content">
+          <a href="./index.html" class="aside-icon" id="home">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <ul>
+              <li>Home</li>
+            </ul>
+          </a>
+          <a href="./about.html" class="aside-icon">
+            <i class="fa-solid fa-person fa-fw"></i>
+            <ul>
+              <li>About</li>
+            </ul>
+          </a>
+          <a href="./product.html" class="aside-icon">
+            <i class="fa-solid fa-chair fa-fw"></i>
+            <ul>
+              <li>Products</li>
+            </ul>
+          </a>
+
+          <div class="side-dark">
+            <button class="dark-btn">
+              <i class="fas fa-sun fa-fw"></i>
+              <i class="fas fa-moon fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!--SIDEBAR CART SECTION-->
+    <section class="sidebarCart-container">
+      <aside class="sidebarCart-center">
+        <div class="sidebarCart-format">
+          <h3>Shopping Cart</h3>
+          <button class="aside-btn asidecart-btn">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+
+        <div class="cart-general">
+          <!-- 
+            this article was created and added to cart-dom dynamically in our addToCartDom.js
+
+       <article class="article-cart" data-id="">
+            <div class="cart-content">
+              <div class="cart-img-info">
+                <img class="cart-img" src="./img/bay.jpg" alt="" />
+
+                <div class="cart-info">
+                  <p class="title">bay chair</p>
+                  <p class="price"><span>$</span>90</p>
+                  <button class="delete" data-id="">remove</button>
+                </div>
+              </div>
+
+              <div class="cart-increase-decrease">
+                <button class="decrease" data-id="">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <p class="number-cart" data-id="">1</p>
+                <button class="increase" data-id="">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </article> 
+          -->
+        </div>
+
+        <footer class="checkout-cart-position">
+          <div class="cart-total">
+            <p>Total : $<span class="amount-total"></span></p>
+          </div>
+          <button class="checkout-btn">Checkout</button>
+        </footer>
+      </aside>
+    </section>
+
+    <!-- ABOUT US -->
+
+    <section class="about-container">
+      <h3>About Our Company</h3>
+      <div class="about-text">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
+          eligendi pariatur itaque doloremque ducimus labore atque recusandae
+          quam ipsa minima dolorum explicabo obcaecati porro maxime, blanditiis
+          culpa aspernatur quae vel? Mollitia ab quaerat fuga. Eligendi corrupti
+          laudantium voluptates, culpa corporis cumque ratione ducimus quia quas
+          aperiam minus eveniet minima libero?
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
+          eligendi pariatur itaque doloremque ducimus labore atque recusandae
+          quam ipsa minima dolorum explicabo obcaecati porro maxime, blanditiis
+          culpa aspernatur quae vel? Mollitia ab quaerat fuga. Eligendi corrupti
+          laudantium voluptates, culpa corporis cumque ratione ducimus quia quas
+          aperiam minus eveniet minima libero?
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
+          eligendi pariatur itaque doloremque ducimus labore atque recusandae
+          quam ipsa minima dolorum explicabo obcaecati porro maxime, blanditiis
+          culpa aspernatur quae vel? Mollitia ab quaerat fuga. Eligendi corrupti
+          laudantium voluptates, culpa corporis cumque ratione ducimus quia quas
+          aperiam minus eveniet minima libero?
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
+          eligendi pariatur itaque doloremque ducimus labore atque recusandae
+          quam ipsa minima dolorum explicabo obcaecati porro maxime, blanditiis
+          culpa aspernatur quae vel? Mollitia ab quaerat fuga. Eligendi corrupti
+          laudantium voluptates, culpa corporis cumque ratione ducimus quia quas
+          aperiam minus eveniet minima libero?
+        </p>
+      </div>
+    </section>
+
+    <!--FOOTER SECTION-->
+
+    <footer class="footer-container">
+      <div class="grid-footer">
+        <a href="index.html" class="nav-logo">
+          <h1 class="logo">
+            EveristBen
+            <i
+              class="heart fa-solid fa-heart fa-beat"
+              style="--fa-animation-duration: 1s"
+            ></i>
+          </h1>
+        </a>
+
+        <article class="services">
+          <p>Services</p>
+          <ul>
+            <li>Resting chairs</li>
+            <li>Office Tables</li>
+            <li>Dinning Tables</li>
+          </ul>
+        </article>
+
+        <article class="services">
+          <p>Company</p>
+          <ul>
+            <li>About Us</li>
+            <li>Privacy Policy</li>
+            <li>Terms of Use</li>
+            <li>Contact Us</li>
+          </ul>
+        </article>
+
+        <article class="services">
+          <p>Follow Us</p>
+          <ul class="icons-list">
+            <li>
+              <i class="fab fa-facebook"></i>
+            </li>
+            <li>
+              <i class="fab fa-twitter"></i>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/in/enemuoh-benedict-44959a237">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/king-lox2">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="contact-btn">
+            <a href="mailto:everistben@gmail.com"
+              ><button>Send Message</button></a
+            >
+          </div>
+        </article>
+      </div>
+
+      <div class="footer-last">
+        <p>2023 Funiture Store</p>
+        <p>All rights reserved</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./about.js"></script>
+  </body>
+</html>
