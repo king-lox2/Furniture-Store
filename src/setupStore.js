@@ -2,6 +2,7 @@ import { setStorageItems, getStorageItems } from "./utils.js";
 
 let store = getStorageItems("Products");
 
+
 const setupStore = products => {
     store = products.map(product => {
         
@@ -20,10 +21,13 @@ const setupStore = products => {
     setStorageItems("Products", store);
 };
 
-const findProduct = id => {
-    let products = store.find(product => product.id === id);
-    console.log(products)
-    return products;
+const findProduct = (id) => {
+    const product = store.find(product => Number(product.id) === Number(id));
+    
+    console.log("Searching ID:", id);
+    console.log("Found product:", product);
+
+    return product;
 };
 
 export { store, setupStore, findProduct };

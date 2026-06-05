@@ -8,6 +8,8 @@ import fetchData from "./src/fetchData.js";
 import { setupStore, store } from "./src/setupStore.js";
 import displayData from "./src/displayData.js";
 
+
+
 const featuredElement = document.querySelector(".featured-products");
 
 const productsF = document.querySelector(".featured-products");

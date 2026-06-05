@@ -9,13 +9,14 @@ const productCart = document.querySelector(".cart-general");
 
 let cart = getStorageItems("cart");
 
-console.log(cart);
-const addToCart = (id) => {
+/*const addToCart = id => {
+    
     let item = cart.find(cartItem => cartItem.id === id);
 
     if (!item) {
         let product = findProduct(id);
 
+        if (!product) return;
         // adding items to cart
         product = { ...product, amount: 1 };
 
@@ -43,6 +44,39 @@ const addToCart = (id) => {
     // this displays the cart section anytime we add to cart
     displayCart();
 };
+*/
+const addToCart = id => {
+  id = Number(id);
+
+  let item = cart.find(cartItem => cartItem.id === id);
+
+  if (!item) {
+    let product = findProduct(id);
+    if (!product) return;
+
+    product = { ...product, amount: 1 };
+
+    cart = [...cart, product];
+
+    addToCartDom(product);
+  } else {
+    increaseAmount(id);
+
+    const items = [...productCart.querySelectorAll(".number-cart")];
+    const target = items.find(el => Number(el.dataset.id) === id);
+
+    if (target) {
+      target.textContent = item.amount + 1;
+    }
+  }
+
+  cartNumberOfItems();
+  cartTotalAmount();
+  setStorageItems("cart", cart);
+  displayCart();
+};
+
+
 
 function cartNumberOfItems() {
     const cartNumber = cart.reduce((total, cartItem) => {
@@ -54,7 +88,8 @@ function cartNumberOfItems() {
 function cartTotalAmount() {
     const amount = cart
         .reduce((total, cartItem) => {
-            return (total += (cartItem.price / 100) * cartItem.amount);
+            const price = Number(cartItem.price) || 0;
+            return total + price * cartItem.amount;
         }, 0)
         .toFixed(2);
     amountTotal.textContent = amount;
@@ -66,75 +101,89 @@ function displayCartInfo() {
     });
 }
 
+
 function increaseAmount(id) {
-    let newAmount;
-    cart = cart.map(cartItem => {
-        if (cartItem.id === id) {
-            newAmount = cartItem.amount + 1;
-            cartItem = { ...cartItem, amount: newAmount };
-        }
-        return cartItem;
-    });
-    return newAmount;
+  id = Number(id);
+
+  let newAmount;
+
+  cart = cart.map(cartItem => {
+    if (cartItem.id === id) {
+      newAmount = cartItem.amount + 1;
+      cartItem = { ...cartItem, amount: newAmount };
+    }
+    return cartItem;
+  });
+
+  return newAmount;
 }
 
 function decreaseAmount(id) {
-    let newAmount;
-    cart = cart.map(cartItem => {
-        if (cartItem.id === id) {
-            newAmount = cartItem.amount - 1;
-            cartItem = { ...cartItem, amount: newAmount };
-        }
-        return cartItem;
-    });
-    return newAmount;
+  id = Number(id);
+
+  let newAmount = 0;
+
+  cart = cart
+    .map(cartItem => {
+      if (cartItem.id === id) {
+        newAmount = cartItem.amount - 1;
+
+        return {
+          ...cartItem,
+          amount: newAmount
+        };
+      }
+      return cartItem;
+    })
+    .filter(cartItem => cartItem.amount > 0); // 👈 remove item if < 1
+
+  return newAmount;
 }
 
 function removeId(id) {
-    cart = cart.filter(cartItems => cartItems.id !== id);
+  id = Number(id);
+
+  cart = cart.filter(cartItem => cartItem.id !== id);
 }
 
-function removeIncreaseDecrease(id) {
-    productCart.addEventListener("click", e => {
-        const element = e.target;
-        const parent = e.target.parentElement;
-        const elementId = e.target.dataset.id;
-        const parentId = e.target.parentElement.dataset.id;
+function removeIncreaseDecrease() {
+  productCart.addEventListener("click", e => {
+    const element = e.target;
+    const parent = e.target.parentElement;
 
-        // remove items
-        if (element.classList.contains("delete")) {
-            // remove id was used to filter and remove item from local storage
-            removeId(elementId);
-            //removing the article from the sidebar cart DOM
-            element.parentElement.parentElement.parentElement.parentElement.remove();
-        }
+    const elementId = Number(element.dataset.id);
+    const parentId = Number(parent.dataset.id);
 
-        // increase items
-        if (parent.classList.contains("increase")) {
-            const increaseItemAmount = increaseAmount(parentId);
-            parent.previousElementSibling.textContent = increaseItemAmount;
-        }
+    // remove items
+    if (element.classList.contains("delete")) {
+      removeId(elementId);
 
-        // decrease items
-        if (parent.classList.contains("decrease")) {
-            const decreaseItemAmount = decreaseAmount(parentId);
-            if (decreaseItemAmount === 0) {
-                // removes the item from the local storage
-                removeId(parentId);
-                //removing the article from the sidebar cart DOM
-                parent.parentElement.parentElement.parentElement.remove();
-            } else {
-                parent.nextElementSibling.textContent = decreaseItemAmount;
-            }
-        }
+      element.parentElement.parentElement.parentElement.parentElement.remove();
+    }
 
-        // calculating the number of items in our cart
-        cartNumberOfItems();
-        // calculating the total cost items in our cart
-        cartTotalAmount();
-        // adding our cart items to local storage
-        setStorageItems("cart", cart);
-    });
+    // increase items
+    if (parent.classList.contains("increase")) {
+      const increaseItemAmount = increaseAmount(parentId);
+      parent.previousElementSibling.textContent = increaseItemAmount;
+    }
+
+    // decrease items
+    if (parent.classList.contains("decrease")) {
+      const decreaseItemAmount = decreaseAmount(parentId);
+
+      if (decreaseItemAmount === 0) {
+        removeId(parentId);
+
+        parent.parentElement.parentElement.parentElement.remove();
+      } else {
+        parent.nextElementSibling.textContent = decreaseItemAmount;
+      }
+    }
+
+    cartNumberOfItems();
+    cartTotalAmount();
+    setStorageItems("cart", cart);
+  });
 }
 
 const init = () => {
